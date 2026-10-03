@@ -470,6 +470,15 @@ namespace SanAndreasUnity.Importing.Conversion
                             parent = Frames[parent.ParentIndex];
                         }
 
+						if (hAnim == null && geometry.SkinToBoneMatrices != null)
+						{
+						    foreach (var f in Frames)
+						    {
+						        var h = f.Source.HAnim;
+						        if (h != null && h.NodeCount > 0) { hAnim = h; break; }
+						    }
+						}
+
                         Renderer renderer;
                         if (hAnim != null)
                         {
